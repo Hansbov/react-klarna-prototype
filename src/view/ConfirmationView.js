@@ -4,7 +4,7 @@ import {LinkContainer} from "react-router-bootstrap";
 import parse from 'html-react-parser';
 
 
-function PaymentView({ htmlSnippet}) {
+function ConfirmationView({htmlSnippet}) {
     useEffect(()=>{
             console.log("hello"+typeof htmlSnippet)
             var checkoutContainer = document.getElementById('my-checkout-container')
@@ -29,4 +29,4 @@ function PaymentView({ htmlSnippet}) {
     )
 }
 
-export default PaymentView;
+export default ConfirmationView;

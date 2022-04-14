@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import PaymentView from "../view/PaymentView";
+import CheckoutView from "../view/CheckoutView";
 import Integration from "./Integration"
 
-function Presenter ({type}){
-    const [order, setOrder] =useState("");
-    const [doc, setDoc] = useState("");
+function Checkout ({type}){
     const [htmlSnippet, setHtmlSnippet] = useState("");
     const OrderData = {
         "purchase_country": "SE",
@@ -28,9 +26,9 @@ function Presenter ({type}){
             ],
         "merchant_urls": {
             "terms": "https://www.example.com/terms.html",
-            "checkout": "https://localhost:3000/thankyou?order_id={checkout.order.id}",
-            "confirmation": "https://localhost:3000/thankyou?order_id={checkout.order.id}",
-            "push": "https://localhost:3000/thankyou?order_id={checkout.order.id}"
+            "checkout": "https://localhost:3000/thankyou/{checkout.order.id}",
+            "confirmation": "https://localhost:3000/thankyou/{checkout.order.id}",
+            "push": "https://localhost:3000/thankyou/{checkout.order.id}"
         }
         }
 
@@ -38,17 +36,17 @@ function Presenter ({type}){
        useEffect(()=>{
             Integration.createOrder(OrderData).then( data => {
                 setHtmlSnippet(data.html_snippet);
-                console.log("presenter" +typeof data.html_snippet);
+                //console.log("presenter" +typeof data.html_snippet);
             })
         },[])
         
             return((htmlSnippet ?
                  <div>
-                    <PaymentView
+                    <CheckoutView
                         htmlSnippet={htmlSnippet}
                     /></div> : <div>no</div>)
             )
 
     }
 
-export default Presenter;
+export default Checkout;
