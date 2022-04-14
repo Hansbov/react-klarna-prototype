@@ -5,17 +5,20 @@ import {LinkContainer} from "react-router-bootstrap"
 /**
  * A view to show if user is unauthorized to view another page.
  */
-function SelectView() {
+function HomeView({handleClick}) {
+
+
     return( 
         <Container>
             <div className="d-grid gap-2">
-                <LinkContainer to="/checkout">
-                <Button size="lg">
+                <Button size="lg" onClick={()=>{
+                        handleClick("single");
+                        }} >
                     Single Payment Example
                 </Button>
-                </LinkContainer>
-                
-                <Button  size="lg">
+                <Button  size="lg" onClick={()=>{
+                        handleClick("subscribe");
+                        }}>
                     Subscription Example
                 </Button>
             </div>
@@ -23,4 +26,4 @@ function SelectView() {
     )
 }
 
-export default SelectView;
+export default HomeView;

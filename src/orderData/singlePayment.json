@@ -1,0 +1,28 @@
+
+    {
+        "purchase_country": "SE",
+        "purchase_currency": "SEK",
+        "locale": "se",
+        "order_amount": 50000,
+        "order_tax_amount": 4545,
+        "order_lines": [
+            {
+                "type": "digital",
+                "reference": "single",
+                "name": "five stuff in single payment",
+                "quantity": 5,
+                "quantity_unit": "pcs",
+                "unit_price": 10000,
+                "tax_rate": 1000,
+                "total_amount": 50000,
+                "total_discount_amount": 0,
+                "total_tax_amount": 4545
+            }
+            ],
+        "merchant_urls": {
+            "terms": "https://www.example.com/terms.html",
+            "checkout": "https://localhost:3000/thankyou/{checkout.order.id}",
+            "confirmation": "https://localhost:3000/thankyou/{checkout.order.id}",
+            "push": "https://localhost:3000/thankyou/{checkout.order.id}"
+        }
+        }

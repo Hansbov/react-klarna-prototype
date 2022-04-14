@@ -1,40 +1,25 @@
 import React, { useEffect, useState } from "react";
+import {Spinner} from "react-bootstrap";
+import {useLocation} from 'react-router-dom';
 import CheckoutView from "../view/CheckoutView";
-import Integration from "./Integration"
+import Integration from "./Integration";
+import singlePayment from "../orderData/singlePayment.json"
+import subscriptionPayment from "../orderData/subscriptionPayment.json"
 
-function Checkout ({type}){
+function Checkout (){
     const [htmlSnippet, setHtmlSnippet] = useState("");
-    const OrderData = {
-        "purchase_country": "SE",
-        "purchase_currency": "SEK",
-        "locale": "se",
-        "order_amount": 50000,
-        "order_tax_amount": 4545,
-        "order_lines": [
-            {
-                "type": "physical",
-                "reference": "19-402-USA",
-                "name": "Red T-Shirt",
-                "quantity": 5,
-                "quantity_unit": "pcs",
-                "unit_price": 10000,
-                "tax_rate": 1000,
-                "total_amount": 50000,
-                "total_discount_amount": 0,
-                "total_tax_amount": 4545
-            }
-            ],
-        "merchant_urls": {
-            "terms": "https://www.example.com/terms.html",
-            "checkout": "https://localhost:3000/thankyou/{checkout.order.id}",
-            "confirmation": "https://localhost:3000/thankyou/{checkout.order.id}",
-            "push": "https://localhost:3000/thankyou/{checkout.order.id}"
+    const location = useLocation();
+    //console.log(location.state.type);
+    const typeOfPurchase = location.state.type;
+    let orderData;
+    if(!typeOfPurchase || typeOfPurchase === "single"){
+        orderData = singlePayment;
+    } else if(typeOfPurchase === "subscribe"){
+        orderData = subscriptionPayment;
         }
-        }
-
 
        useEffect(()=>{
-            Integration.createOrder(OrderData).then( data => {
+            Integration.createOrder(orderData).then( data => {
                 setHtmlSnippet(data.html_snippet);
                 //console.log("presenter" +typeof data.html_snippet);
             })
@@ -44,7 +29,7 @@ function Checkout ({type}){
                  <div>
                     <CheckoutView
                         htmlSnippet={htmlSnippet}
-                    /></div> : <div>no</div>)
+                    /></div> : <div><Spinner animation="border" /></div>)
             )
 
     }

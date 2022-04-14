@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 
 function CheckoutView({htmlSnippet}) {
     useEffect(()=>{
-            console.log("hello"+typeof htmlSnippet)
+            //console.log("hello"+typeof htmlSnippet)
             var checkoutContainer = document.getElementById('my-checkout-container')
             checkoutContainer.innerHTML = htmlSnippet
             var scriptsTags = checkoutContainer.getElementsByTagName('script')

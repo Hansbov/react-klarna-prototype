@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Spinner} from "react-bootstrap";
 import { useSearchParams } from 'react-router-dom';
 import ConfirmationView from "../view/ConfirmationView";
 import Integration from "./Integration"
@@ -22,7 +23,7 @@ function Confimation ({}){
                  <div>
                     <ConfirmationView
                         htmlSnippet={htmlSnippet}
-                    /></div> : <div>no</div>)
+                    /></div> : <div><Spinner animation="border" /></div>)
             )
 
     }
