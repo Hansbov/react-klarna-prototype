@@ -26,7 +26,7 @@ const Integration = {
 
     async fetchOrder(orderID){
         try {
-            const Response = await this.apiCall(`/order/${orderID}`, "GET");
+            const Response = await this.apiCall(`/checkout/${orderID}`, "GET");
             return Response.data;
         } catch (error) {
             console.log(error)
