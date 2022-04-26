@@ -13,7 +13,6 @@ import subscriptionPayment from "../orderData/subscriptionPayment.json"
 function Checkout() {
     const [htmlSnippet, setHtmlSnippet] = useState("");
     const location = useLocation();
-    //const typeOfPurchase = location.state.type;
     let orderData;
     let typeOfPurchase = "";
 
