@@ -9,7 +9,7 @@ function HomeView({handleClick}) {
     return( 
         <Container>
             <div className="d-grid gap-2">
-                <Button size="lg" onClick={() => {handleClick("single")}} >
+                <Button size="lg" onClick={() => {handleClick("single")}}>
                     Single Payment Example
                 </Button>
                 <Button size="lg" onClick={() => {handleClick("subscribe")}}>
