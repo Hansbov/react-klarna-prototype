@@ -5,18 +5,19 @@ import { useParams } from "react-router";
 import { useNavigate} from 'react-router-dom';
 import Checkout from "./Checkout";
 
-function Home ({}){
-       const navigate = useNavigate();
+/**
+ * A component that keeps track of which payment option was chosen
+ * @returns a HomeView, along with a handler function
+ */
+function Home() {
+    const navigate = useNavigate();
 
-       function handleClick(value){
-            navigate("/checkout", {state:{type:value}})
-       }
-        
-    return(<HomeView
-        handleClick={handleClick}
-    />)
-                 
-
+    function handleClick(value) {
+        navigate("/checkout", {state:{type:value}})
     }
-
+        
+    return (
+        <HomeView handleClick={handleClick} />
+    )
+}
 export default Home;

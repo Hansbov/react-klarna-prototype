@@ -5,27 +5,26 @@ import ConfirmationView from "../view/ConfirmationView";
 import Integration from "./Integration"
 import { useParams } from "react-router";
 
-function Confimation ({}){
+/**
+ * A component that fetches a placed order based on it's order id
+ * @returns A ConfirmationView or a Spinner if the data is not ready
+ */
+function Confimation() {
     const [htmlSnippet, setHtmlSnippet] = useState("");
-
     const [searchParams] = useSearchParams();
     let {order_id} = useParams();
-    console.log(order_id)
 
-       useEffect(()=>{
-            Integration.fetchOrder(order_id).then( data => {
-                setHtmlSnippet(data.html_snippet);
-                //console.log("presenter" +typeof data.html_snippet);
-            })
-        },[])
+    useEffect(() => {
+        Integration.fetchOrder(order_id).then(data => {
+            setHtmlSnippet(data.html_snippet);
+        })
+    },[])
         
-            return((htmlSnippet ?
-                 <div>
-                    <ConfirmationView
-                        htmlSnippet={htmlSnippet}
-                    /></div> : <div><Spinner animation="border" /></div>)
-            )
-
-    }
-
+    return(
+        (htmlSnippet ?
+            <div><ConfirmationView htmlSnippet={htmlSnippet} /></div> 
+            : 
+            <div><Spinner animation="border" /></div>)
+    )
+}
 export default Confimation;
