@@ -1,4 +1,4 @@
-#Bachelor's thesis - Frontend
+# Bachelor's thesis - Frontend
 
 This is the frontend of a prototype of an implementation of Klarna's payment service. 
 It is witten in JavaScript and React. 
