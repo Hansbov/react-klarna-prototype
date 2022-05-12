@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+#Bachelor's thesis - Frontend
+
+This is the frontend of a prototype of an implementation of Klarna's payment service. 
+It is witten in JavaScript and React. 
+
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
